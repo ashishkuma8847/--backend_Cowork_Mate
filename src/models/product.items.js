@@ -10,23 +10,39 @@ const Product = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
+    hostImgPath: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hostName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hostingTime: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+     hostingReview: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    catogry: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    raiting: {
+    mainImgPath: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    rewiews: {
+    raitingImgPath: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    bestsellerp: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    hotdeal: {
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -34,121 +50,65 @@ const Product = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    originalPrice: {
+    raiting: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    discountPercent: {
-      type: DataTypes.STRING,
-    },
-    categroy: {
-      type: DataTypes.STRING,
-    },
-    size: {
+    detailImgPath: {
       type: DataTypes.TEXT,
       allowNull: true,
       get() {
-        const value = this.getDataValue("size");
+        const value = this.getDataValue("detailImg");
         return value ? JSON.parse(value) : [];
       },
       set(value) {
-        this.setDataValue("size", JSON.stringify(value));
+        this.setDataValue("detailImg", JSON.stringify(value));
       },
     },
-    headimgage: {
+    officeImgPath: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      get() {
+        const value = this.getDataValue("detailImg");
+        return value ? JSON.parse(value) : [];
+      },
+      set(value) {
+        this.setDataValue("detailImg", JSON.stringify(value));
+      },
+    },
+    officeTitle: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    detailimages: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("detailimages");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("detailimages", JSON.stringify(value));
-      },
+    officeInfo: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    bestsellerimg: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("bestsellerimg");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("bestsellerimg", JSON.stringify(value));
-      },
+    reviewImg: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    // selectedSize: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: true,
-    //   get() {
-    //     //return JSON.parse(this.getDataValue("selectedSize") || "[]");
-    //     const value = this.getDataValue("selectedSize");
-    //     return value ? JSON.parse(value) : [];
-    //   },
-    //   set(value) {
-    //     this.setDataValue("selectedSize", JSON.stringify(value));
-    //   },
-    // },
-
-    selectedColor: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("selectedColor");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("selectedColor", JSON.stringify(value));
-      },
+    reviewCharacter: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    reviewRaitingImg: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    reviewTimeWith: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+     reviewDate: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+      reviewperagraph: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
-    paragraph: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("paragraph");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("paragraph", JSON.stringify(value));
-      },
-    },
-    productInfomation: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("productInfomation");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("productInfomation", JSON.stringify(value));
-      },
-    },
-    avalible: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("avalible");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("avalible", JSON.stringify(value));
-      },
-    },
-    optionavalible: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("optionavalible");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("optionavalible", JSON.stringify(value));
-      },
-    },
   },
   {
     timestamps: true,

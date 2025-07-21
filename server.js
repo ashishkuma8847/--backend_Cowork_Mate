@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import "./src/models/users.js";
 import userrouter from "./src/router/user.router.js";
+import Product from "./src/router/productitems.router.js";
 import path from "path";
 import { dirname } from "./src/middleware/upload.js";
 dotenv.config();
@@ -36,7 +37,8 @@ connection();
 
 app.use(
   "/api",
-  userrouter
+  userrouter,Product
+
 );
 
 app.listen(PORT, () => {
