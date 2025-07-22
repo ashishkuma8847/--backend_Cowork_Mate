@@ -7,14 +7,14 @@ const sec = process.env.SECRET_KEY
 
 export const signup = async (req,res)=>{
     try {
-        const {name,email,password}=req.body
+        const {firstname,lastname,email,password}=req.body
         const data = await Users.findOne({where:{email}})
         if(data) return res.status(400).json({message:"user alrady exist"}) 
         
         const hashdata = await bcrypt.hash(password,10)
         if(!hashdata) return res.status(400).json({message:"password not hash"})
             
-            const user = await Users.create({name,email,password:hashdata})
+            const user = await Users.create({firstname,lastname,email,password:hashdata})
             if(!user)return res.status(400).json({message:"user not cerater",user:user}) 
                 res.status(201).json({message:"user created",user:user})
     } catch (error) {
@@ -41,8 +41,8 @@ export const login = async (req,res)=>{
 
 export const createuser = async (req,res)=>{
     try {
-const {name ,email,password}=req.body
-const user = await Users.create({name,email,password})
+const {firstname,lastname ,email,password}=req.body
+const user = await Users.create({firstname,lastname,email,password})
 if(!user)return res.status(400).json({message:"user not created"})
 
     res.status(200).json({message:"user cerated successfully",user:user})
@@ -57,7 +57,7 @@ if(!user)return res.status(400).json({message:"user not created"})
 export const deleteone = async (req,res)=>{
     try {
 const {id}=req.params
-const user = await User.destroy({where:{id}})
+const user = await Users.destroy({where:{id}})
 if(!user)return res.status(400).json({message:"user not created"})
 
     res.status(200).json({message:"user cerated successfully",user:user})
@@ -69,7 +69,7 @@ if(!user)return res.status(400).json({message:"user not created"})
 
 export const deleteall = async (req,res)=>{
     try {
-const user = await User.destroy({where:{ }})
+const user = await Users.destroy({where:{ }})
 if(!user)return res.status(400).json({message:"user not created"})
 
     res.status(200).json({message:"user cerated successfully",user:user})
@@ -81,7 +81,7 @@ if(!user)return res.status(400).json({message:"user not created"})
 
 export const getall = async (req,res)=>{
     try {
-const user = await User.findAll()
+const user = await Users.findAll()
 if(!user)return res.status(400).json({message:"user not created"})
 
     res.status(200).json({message:"user cerated successfully",user:user})
@@ -95,7 +95,7 @@ if(!user)return res.status(400).json({message:"user not created"})
 export const getone = async (req,res)=>{
     try {
         const {id}= req.params
-const user = await User.findOne({where:{id}})
+const user = await Users.findOne({where:{id}})
 if(!user)return res.status(400).json({message:"user not created"})
 
     res.status(200).json({message:"user cerated successfully",user:user})
@@ -109,10 +109,10 @@ if(!user)return res.status(400).json({message:"user not created"})
 export const update = async (req,res)=>{
     try {
         const {id}= req.params
-        const {name,email,password}=req.body
-const user = await User.findOne({where:{id}})
+        const {firstname,lastname,email,password}=req.body
+const user = await Users.findOne({where:{id}})
 if(!user)return res.status(400).json({message:"user not created"})
- const data =await User.update({name,email,password},{where:{id}})
+ const data =await User.update({firstname,lastname,email,password},{where:{id}})
     res.status(200).json({message:"user cerated successfully",data:data})
     } catch (error) {
         res.status(400).json({message:"error",error:error.message}) 
