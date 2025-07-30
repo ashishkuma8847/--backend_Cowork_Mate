@@ -51,63 +51,42 @@ const Product = sequelize.define(
       allowNull: false,
     },
     raiting: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     detailImgPath: {
       type: DataTypes.TEXT,
       allowNull: true,
       get() {
-        const value = this.getDataValue("detailImg");
+        const value = this.getDataValue("detailImgPath");
         return value ? JSON.parse(value) : [];
       },
       set(value) {
-        this.setDataValue("detailImg", JSON.stringify(value));
+        this.setDataValue("detailImgPath", JSON.stringify(value));
       },
     },
-    officeImgPath: {
+    office: {
       type: DataTypes.TEXT,
       allowNull: true,
       get() {
-        const value = this.getDataValue("detailImg");
+        const value = this.getDataValue("office");
         return value ? JSON.parse(value) : [];
       },
       set(value) {
-        this.setDataValue("detailImg", JSON.stringify(value));
+        this.setDataValue("office", JSON.stringify(value));
       },
     },
-    officeTitle: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    officeInfo: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    reviewImg: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    reviewCharacter: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    reviewRaitingImg: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    reviewTimeWith: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-     reviewDate: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-      reviewperagraph: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    review: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      get() {
+        const value = this.getDataValue("review");
+        return value ? JSON.parse(value) : [];
+      },
+      set(value) {
+        this.setDataValue("review", JSON.stringify(value));
+      },
+    }
 
   },
   {
