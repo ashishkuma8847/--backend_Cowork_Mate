@@ -44,3 +44,8 @@ app.use(
 app.listen(PORT, () => {
   console.log("port  is :", PORT);
 });
+
+app.get("/api/healthcheck", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
