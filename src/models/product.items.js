@@ -76,17 +76,17 @@ const Product = sequelize.define(
         this.setDataValue("office", JSON.stringify(value));
       },
     },
-    review: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      get() {
-        const value = this.getDataValue("review");
-        return value ? JSON.parse(value) : [];
-      },
-      set(value) {
-        this.setDataValue("review", JSON.stringify(value));
-      },
-    }
+    // review: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: true,
+    //   get() {
+    //     const value = this.getDataValue("review");
+    //     return value ? JSON.parse(value) : [];
+    //   },
+    //   set(value) {
+    //     this.setDataValue("review", JSON.stringify(value));
+    //   },
+    // }
 
   },
   {

@@ -7,6 +7,7 @@ import userrouter from "./src/router/user.router.js";
 import Product from "./src/router/productitems.router.js";
 import path from "path";
 import { dirname } from "./src/middleware/upload.js";
+import reviw from "./src/router/reviw.route.js";
 dotenv.config();
 
 const app = express();
@@ -37,7 +38,7 @@ connection();
 
 app.use(
   "/api",
-  userrouter,Product
+  userrouter,Product,reviw
 
 );
 
