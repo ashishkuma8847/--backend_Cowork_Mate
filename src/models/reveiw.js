@@ -33,11 +33,23 @@ const Review = sequelize.define("Review", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  reviewperagraph: {
+    category: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-}, {
+  reviewperagraph: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      get() {
+        const value = this.getDataValue("reviewperagraph");
+        return value ? JSON.parse(value) : [];
+      },
+      set(value) {
+        this.setDataValue("reviewperagraph", JSON.stringify(value));
+      },
+    },
+}, 
+{
   timestamps: true,
 });
 
@@ -45,3 +57,4 @@ Review.belongsTo(Product, { foreignKey: "productId" });
 Product.hasMany(Review, { foreignKey: "productId", as: "reviews" });
 
 export default Review;
+// Review.sync({force:true}).then(()=>console.log("product was clear"))
